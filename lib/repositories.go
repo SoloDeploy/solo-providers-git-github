@@ -1,4 +1,4 @@
-package main
+package lib
 
 func GetRepositoryNames() []string {
 	return []string{

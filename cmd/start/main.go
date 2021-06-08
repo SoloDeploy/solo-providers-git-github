@@ -1,7 +1,7 @@
 package start
 
 import (
-	"log"
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -20,12 +20,12 @@ func NewCmd() *cobra.Command {
 		Short: "Starts the gRPC listener",
 		Long:  long_description,
 		Run: func(cmd *cobra.Command, args []string) {
-			log.Print("Starting the gRPC server")
-			log.Printf("Listening at localhost:%v", port)
+			fmt.Println("Starting the Solo GitHub Provider gRPC server")
+			fmt.Printf("Listening at localhost:%v\n", port)
 
 			err := handler(port)
 			if err != nil {
-				log.Printf("Error starting the Solo GitHub GitProvider: %v", err)
+				fmt.Printf("Error starting the Solo GitHub GitProvider: %v\n", err)
 				os.Exit(1)
 			}
 			os.Exit(0)
