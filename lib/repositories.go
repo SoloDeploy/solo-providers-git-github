@@ -1,12 +1,18 @@
 package lib
 
 import (
+	"context"
+
 	"github.com/google/go-github/github"
 )
 
 func GetRepositoryNames(org string, pat string) ([]string, error) {
 	client, ctx := githubClientContext(pat)
 
+	return getRepositoryNames(ctx, client, org)
+}
+
+func getRepositoryNames(ctx context.Context, client *github.Client, org string) ([]string, error) {
 	opt := &github.RepositoryListByOrgOptions{
 		ListOptions: github.ListOptions{PerPage: 10},
 	}
