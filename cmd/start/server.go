@@ -19,7 +19,9 @@ type Server struct {
 // of repository names
 func (s *Server) GetRepositoryNames(ctx context.Context, in *pb.GetRepositoryNamesRequest) (*pb.GetRepositoryNamesResponse, error) {
 	log.Println("Received incoming request")
-	names := lib.GetRepositoryNames()
+
+	names, _ := lib.GetRepositoryNames(org, pat)
+
 	return &pb.GetRepositoryNamesResponse{
 		Names: names,
 	}, nil
